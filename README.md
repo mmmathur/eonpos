@@ -1,16 +1,16 @@
-# README #
+# EON POS #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+An angular 1.5 point of sale project 
 
-### What is this repository for? ###
+### POS UI development code ###
 
-* Quick summary
-* Version
+* A point of sale project
+* Version 1.0
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
-* Summary of set up
+* Clone this repo and run npm install when you are in the repo.
 * Configuration
 * Dependencies
 * Database configuration
