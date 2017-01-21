@@ -1,0 +1,49 @@
+﻿<div class="main-container">
+    <app-bar></app-bar>
+</div>
+<!--<div class="col-md-6 col-md-offset-3">
+    <h1>Hi {{currentUser.firstName}}!</h1>
+    <p>You're logged in with Angular 2!!</p>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            - <a (click)="deleteUser(user.id)">Delete</a>
+        </li>
+    </ul>
+</div>-->
+
+<nav class="main-menu">
+    <a [routerLink]=" ['./home'] " routerLinkActive="active">
+    Sales Report
+    </a>
+    <a [routerLink]=" ['./detail'] " routerLinkActive="active">
+    Product List
+    </a>
+    <a [routerLink]=" ['./barrel'] " routerLinkActive="active">
+    Gas Price
+    </a>
+    <a [routerLink]=" ['./about'] " routerLinkActive="active">
+    Gas Sales
+    </a>
+    <a [routerLink]=" ['./about'] " routerLinkActive="active">
+    Stock Managment
+    </a>
+    <a [routerLink]=" ['./about'] " routerLinkActive="active">
+    Reports
+    </a>
+    <a [routerLink]=" ['./about'] " routerLinkActive="active">
+    Profit Analysis
+    </a>
+    <a [routerLink]=" ['./about'] " routerLinkActive="active">
+    Promotions
+    </a>
+    <a [routerLink]=" ['./about'] " routerLinkActive="active">
+    User Managment
+    </a>
+    <span class="col-xs-offset-1">
+        <search-bar></search-bar>
+    </span>
+</nav>
+
+<router-outlet></router-outlet>
