@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule }        from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
   NgModule,
@@ -15,6 +15,8 @@ import {
   PreloadAllModules
 } from '@angular/router';
 
+import { ComponentModule } from './components/components.module';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -27,7 +29,17 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
+import { AppBar, SearchBar } from './ui';
+import { AuthGuard } from './_guards';
+import { AlertService, AuthenticationService, UserService } from './_services';
+import { AlertComponent } from './_directives';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -54,17 +66,31 @@ type StoreType = {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    AppBar,
+    SearchBar,
+    AlertComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    ComponentModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AuthGuard,
+    AlertService,
+    AuthenticationService,
+    UserService,
+
+    // providers used to create fake backend
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
   ]
 })
 export class AppModule {
