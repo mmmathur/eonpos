@@ -1,46 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-bar',
-    styles: [`
-        .app-bar {
-        height: 65px;
-        padding: 5px 30px;
-        background-color: #00BCD4;
-        }
-        .logo {
-        color: white;
-        font-size: 30px;
-        font-weight: 300;
-        cursor: pointer;
-        }
-        .link {
-        color: white;
-        font-size: 14px;
-        font-weight: 400;
-        cursor: pointer; 
-        }
-        .user {
-            color: black;
-            font-size: 14 px;
-            font-weight: 400;
-            cursor: default;
-        }
-    `],
     template: `
-    <header class="app-bar row middle-xs">
-    <span class="logo col-xs-10">
-        EON POS
-    </span>
-    <nav class="col-xs-2">
-        <div class="row middle-xs between-xs">
-        <span class="user">Welcome Jon Doe</span>
-        <span class="link" [routerLink]="['/login']">Signout</span>
-        </div>
-    </nav>
-    </header>
+    <div>
+    <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="toggleMenu()">
+        <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    <span class="text-center">EON POS</span>
+    <span class="app-toolbar-filler"></span>
+    <search-bar></search-bar>
+    <span class="app-toolbar-filler"></span>
+    <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    
+  </md-toolbar>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item disabled>
+    <md-icon> person </md-icon>
+    <span>Welcome Jon Doe</span>
+    </button>
+    <button md-menu-item [routerLink]="['/login']">
+    <span>Signout</span>
+    </button>
+  </md-menu>
+  </div>
     `
 
 })
 
-export class AppBar {}
+export class AppBar {
+  @Output() onToggle = new EventEmitter();
+
+  toggleMenu() {
+    this.onToggle.emit();
+  }
+}

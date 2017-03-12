@@ -1,11 +1,13 @@
 /* this file will be extracted to main dist folder and is imported in index.html */
 /* This file is for setting global styles  */
 @import 'variables';
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
 
 body {
   font-family: "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
-  background-color: $bckgrund-color;
-  margin: 0, auto
+  background-color: #fff;
+  margin: 0, auto;
+  -webkit-font-smoothing: antialiased;
 }
 
 
@@ -43,4 +45,62 @@ nav.main-menu a {
 
 .main-container {
   color: #fff;
+  background-color: $header-color;
+}
+
+// md-toolbar-row {
+//   justify-content: space-between;
+// }
+
+.app-toolbar-filler {
+  flex: 1 1 auto;
+}
+
+div.login-panel {
+  margin-bottom: 15px;
+
+}
+
+.title {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: $header-color;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.login-input {
+  width: 100%;
+}
+
+.app-icon-button {
+  display: none;
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
+  font-weight: normal;
+  height: auto;
+  line-height: inherit;
+  margin: 0 30px 0 0;
+  min-width: 0;
+  text-align: left;
+  text-decoration: none;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .app-icon-button {
+    display: block;
+  }
+  .nav {
+    display:none;
+  }
+  .form-control {
+    width:100%;
+    display: block;
+    }
 }

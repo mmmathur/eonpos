@@ -29,7 +29,7 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { AppBar, SearchBar } from './ui';
+import { AppBar, SearchBar, EonSideBar } from './ui';
 import { AuthGuard } from './_guards';
 import { AlertService, AuthenticationService, UserService } from './_services';
 import { AlertComponent } from './_directives';
@@ -40,9 +40,13 @@ import { RegisterComponent } from './register';
 import { fakeBackendProvider } from './_helpers';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SidebarModule } from 'ng-sidebar';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import 'hammerjs';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -68,6 +72,7 @@ type StoreType = {
     NoContentComponent,
     AppBar,
     SearchBar,
+    EonSideBar,
     AlertComponent,
     LoginComponent,
     RegisterComponent
@@ -77,7 +82,10 @@ type StoreType = {
     ComponentModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    NgbModule.forRoot(),
+    MaterialModule.forRoot(),
+    SidebarModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
